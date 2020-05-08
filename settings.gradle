@@ -1,0 +1,2 @@
+rootProject.name='MemeItUpApp'
+include ':app'
