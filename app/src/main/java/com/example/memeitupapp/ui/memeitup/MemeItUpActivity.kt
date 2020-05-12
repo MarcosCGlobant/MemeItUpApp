@@ -1,9 +1,10 @@
-package com.example.memeitupapp
+package com.example.memeitupapp.ui.memeitup
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.example.memeitupapp.R
 
-class MainActivity : AppCompatActivity() {
+class MemeItUpActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
