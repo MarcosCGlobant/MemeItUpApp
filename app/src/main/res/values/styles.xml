@@ -1,11 +1,21 @@
 <resources>
 
-    <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="ImageAppIcon">
+        <item name="android:layout_width">@dimen/activity_main_app_icon_width</item>
+        <item name="android:layout_height">@dimen/activity_main_app_icon_height</item>
+        <item name="android:contentDescription">@string/activity_main_app_title_icon</item>
+        <item name="android:src">@drawable/meme_it_up_app_icon</item>
+    </style>
+
+    <style name="TextViewAppName">
+        <item name="android:text">@string/activity_main_app_name_text</item>
+        <item name="android:textColor">@color/activity_main_app_name_text_color</item>
+        <item name="android:textSize">@dimen/activity_main_app_name_text_size</item>
+    </style>
 </resources>
