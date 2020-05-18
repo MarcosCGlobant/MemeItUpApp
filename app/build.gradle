@@ -33,6 +33,12 @@ dependencies {
     implementation lib.appcompat
     implementation lib.coreKtx
     implementation lib.constraintlayout
+    implementation lib.retrofit
+    implementation lib.retrofitGson
+    implementation lib.androidxViewModel
+    implementation lib.kotlinxCoroutinesAndroid
+    implementation lib.kotlinxCoroutinesCore
     implementation lib.viewpager2
     implementation lib.tablayout
+    implementation lib.androidxLifecycle
 }

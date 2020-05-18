@@ -10,7 +10,7 @@ import com.example.memeitupapp.ui.listmemes.ListMemesFragment
 class ViewPagerFragmentAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
     FragmentStateAdapter(fragmentManager, lifecycle) {
 
-    var fragments: List<Fragment> = listOf(GridMemesFragment(), ListMemesFragment())
+    private var fragments: List<Fragment> = listOf(GridMemesFragment(), ListMemesFragment())
 
     override fun createFragment(position: Int): Fragment = fragments[position]
 
