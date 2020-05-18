@@ -38,4 +38,7 @@ dependencies {
     implementation lib.androidxViewModel
     implementation lib.kotlinxCoroutinesAndroid
     implementation lib.kotlinxCoroutinesCore
+    implementation lib.viewpager2
+    implementation lib.tablayout
+    implementation lib.androidxLifecycle
 }

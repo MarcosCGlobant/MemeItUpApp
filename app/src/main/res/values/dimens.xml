@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="margin_top_service_button">100dp</dimen>
-    <dimen name="margin_top_first_meme_id">200dp</dimen>
+    <dimen name="margin_top_first_meme_name">200dp</dimen>
+    <dimen name="activity_main_app_icon_width">75dp</dimen>
+    <dimen name="activity_main_app_icon_height">75dp</dimen>
+    <dimen name="activity_main_app_name_text_size">35sp</dimen>
+    <dimen name="activity_main_view_pager_layout_height">0dp</dimen>
 </resources>

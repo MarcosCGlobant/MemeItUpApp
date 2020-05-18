@@ -1,5 +1,12 @@
 <resources>
-    <string name="app_name">MemeItUpApp</string>
+    <string name="app_name">Meme It Up</string>
+    <string name="list_of_memes_text">List of memes Fragment</string>
+    <string name="grid_of_memes_text">Grid of memes Fragment</string>
+    <string name="activity_main_app_title_icon">memes title icon</string>
+    <string name="activity_main_app_name_text">Meme It Up</string>
+    <string name="icon_app">icon_app</string>
+    <string name="grid_of_memes">Grid of Memes</string>
+    <string name="list_of_memes">List of Memes</string>
     <string name="push_to_call_service">Push to call service</string>
     <string name="call">Call</string>
     <string name="first_meme_id">first meme name</string>
