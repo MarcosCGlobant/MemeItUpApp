@@ -7,7 +7,5 @@
     <string name="icon_app">icon_app</string>
     <string name="grid_of_memes">Grid of Memes</string>
     <string name="list_of_memes">List of Memes</string>
-    <string name="push_to_call_service">Push to call service</string>
-    <string name="call">Call</string>
-    <string name="first_meme_id">first meme name</string>
+    <string name="meme_image">meme image</string>
 </resources>

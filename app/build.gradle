@@ -34,11 +34,14 @@ dependencies {
     implementation lib.coreKtx
     implementation lib.constraintlayout
     implementation lib.retrofit
-    implementation lib.retrofitGson
-    implementation lib.androidxViewModel
-    implementation lib.kotlinxCoroutinesAndroid
-    implementation lib.kotlinxCoroutinesCore
+    implementation lib.retrofitgson
+    implementation lib.androidxviewmodel
+    implementation lib.kotlinxcoroutinesandroid
+    implementation lib.kotlinxcoroutinescore
     implementation lib.viewpager2
     implementation lib.tablayout
-    implementation lib.androidxLifecycle
+    implementation lib.androidxlifecycle
+    implementation lib.recyclerview
+    implementation lib.cardview
+    implementation lib.glide
 }

@@ -1,5 +1,6 @@
 package com.example.memeitupapp.ui.gridmemes
 
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -15,8 +16,8 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class GridMemesViewModel : ViewModel() {
-
-    private val memesRepository: MemeRepository = MemeRepository()
+    @VisibleForTesting
+    var memesRepository: MemeRepository = MemeRepository()
     private var mutableMainState: MutableLiveData<Event<Data<List<Meme>>>> = MutableLiveData()
     val mainState: LiveData<Event<Data<List<Meme>>>>
         get() = mutableMainState

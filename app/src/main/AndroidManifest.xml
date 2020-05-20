@@ -11,7 +11,10 @@
         android:roundIcon="@drawable/meme_it_up_app_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.mainmemes.MainMemesActivity">
+        <activity
+            android:name=".ui.mainmemes.MainMemesActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
