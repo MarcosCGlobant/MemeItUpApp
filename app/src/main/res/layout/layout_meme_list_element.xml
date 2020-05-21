@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     style="@style/CardViewList"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -36,8 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:barrierDirection="right"
-            app:constraint_referenced_ids="list_memes_element_image_view"
-            tools:layout_editor_absoluteX="@dimen/layout_meme_list_element_barrier_absoluteX" />
+            app:constraint_referenced_ids="list_memes_element_image_view" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

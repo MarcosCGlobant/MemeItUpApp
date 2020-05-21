@@ -8,7 +8,6 @@
     <dimen name="layout_meme_list_element_image_width">80dp</dimen>
     <dimen name="layout_meme_list_element_image_height">80dp</dimen>
     <dimen name="layout_meme_list_element_text_view_text_size">16sp</dimen>
-    <dimen name="layout_meme_list_element_barrier_absoluteX">411dp</dimen>
     <dimen name="card_view_card_elevation">4dp</dimen>
     <dimen name="card_view_max_card_elevation">6dp</dimen>
     <dimen name="card_view_grid_corner_radius">30dp</dimen>

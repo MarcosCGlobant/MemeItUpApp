@@ -1,12 +1,12 @@
-package com.example.memeitupapp.ui.listmemes
+package com.example.memeitupapp.ui.gridmemes.viewmodel
 
-import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.memeitupapp.data.entity.Meme
-import com.example.memeitupapp.data.repository.MemeRepository
+import com.example.memeitupapp.ui.contract.GridMemesContract
+import com.example.memeitupapp.ui.gridmemes.model.GridMemesModel
 import com.example.memeitupapp.util.Data
 import com.example.memeitupapp.util.Event
 import com.example.memeitupapp.util.Result
@@ -15,16 +15,13 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class ListMemesViewModel : ViewModel() {
-    @VisibleForTesting
-    var memesRepository: MemeRepository = MemeRepository()
+class GridMemesViewModel(private val gridMemesModel: GridMemesModel) : ViewModel(), GridMemesContract.ViewModel {
     private var mutableMainState: MutableLiveData<Event<Data<List<Meme>>>> = MutableLiveData()
-    val mainState: LiveData<Event<Data<List<Meme>>>>
-        get() = mutableMainState
+    override val mainState: LiveData<Event<Data<List<Meme>>>> = mutableMainState
 
-    fun getMemesFromApi() = viewModelScope.launch {
+    override fun fetchMemes() = viewModelScope.launch {
         mutableMainState.postValue(Event(Data(responseType = Status.LOADING)))
-        withContext(Dispatchers.IO) { memesRepository.getMemes() }.let { result ->
+        withContext(Dispatchers.IO) { gridMemesModel.getMemes() }.let { result ->
             when (result) {
                 is Result.Failure -> {
                     mutableMainState.postValue(Event(Data(responseType = Status.GET_MEMES_ERROR, error = result.exception)))

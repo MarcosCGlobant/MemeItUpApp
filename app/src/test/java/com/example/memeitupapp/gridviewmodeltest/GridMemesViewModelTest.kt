@@ -4,8 +4,8 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import com.example.memeitupapp.data.entity.Meme
-import com.example.memeitupapp.data.repository.MemeRepository
-import com.example.memeitupapp.ui.gridmemes.GridMemesViewModel
+import com.example.memeitupapp.ui.gridmemes.model.GridMemesModel
+import com.example.memeitupapp.ui.gridmemes.viewmodel.GridMemesViewModel
 import com.example.memeitupapp.util.Result
 import com.example.memeitupapp.util.Status
 import com.nhaarman.mockitokotlin2.mock
@@ -24,9 +24,10 @@ import org.junit.Assert.assertNull
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.mockito.Mock
-import org.mockito.MockitoAnnotations
+import org.junit.runner.RunWith
+import org.mockito.junit.MockitoJUnitRunner
 
+@RunWith(MockitoJUnitRunner::class)
 class GridMemesViewModelTest {
 
     @ObsoleteCoroutinesApi
@@ -36,12 +37,8 @@ class GridMemesViewModelTest {
     val instantTaskExecutorRule = InstantTaskExecutorRule()
 
     private lateinit var subject: GridMemesViewModel
-
-    @Mock
-    lateinit var memes: List<Meme>
-
-    @Mock
-    private val mockedMemeRepository: MemeRepository = mock()
+    private var memes: List<Meme> = mock()
+    private val mockedGridMemesModel: GridMemesModel = mock()
 
     @ExperimentalCoroutinesApi
     @ObsoleteCoroutinesApi
@@ -49,9 +46,7 @@ class GridMemesViewModelTest {
     fun setup() {
         Dispatchers.setMain(mainThreadSurrogate)
 
-        MockitoAnnotations.initMocks(this)
-        subject = GridMemesViewModel()
-        subject.memesRepository = mockedMemeRepository
+        subject = GridMemesViewModel(mockedGridMemesModel)
     }
 
     @ExperimentalCoroutinesApi
@@ -66,11 +61,11 @@ class GridMemesViewModelTest {
     fun `on loading grid of memes successfully`() {
         val mockedMemesResult: Result.Success<List<Meme>> = mock()
         val liveDataUnderTest = subject.mainState.testObserver()
-        whenever(mockedMemeRepository.getMemes()).thenReturn(mockedMemesResult)
+        whenever(mockedGridMemesModel.getMemes()).thenReturn(mockedMemesResult)
         whenever(mockedMemesResult.data).thenReturn(memes)
 
         runBlocking {
-            subject.getMemesFromApi().join()
+            subject.fetchMemes().join()
         }
         assertEquals(Status.LOADING, liveDataUnderTest.observedValues[FIRST_RESPONSE]?.peekContent()?.responseType)
         assertEquals(Status.GET_MEMES_SUCCESS, liveDataUnderTest.observedValues[SECOND_RESPONSE]?.peekContent()?.responseType)
@@ -81,10 +76,10 @@ class GridMemesViewModelTest {
     fun `on loading grid of memes with error connection`() {
         val mockedMemesResult: Result.Failure = mock()
         val liveDataUnderTest = subject.mainState.testObserver()
-        whenever(mockedMemeRepository.getMemes()).thenReturn(mockedMemesResult)
+        whenever(mockedGridMemesModel.getMemes()).thenReturn(mockedMemesResult)
 
         runBlocking {
-            subject.getMemesFromApi().join()
+            subject.fetchMemes().join()
         }
         assertEquals(Status.LOADING, liveDataUnderTest.observedValues[FIRST_RESPONSE]?.peekContent()?.responseType)
         assertEquals(Status.GET_MEMES_ERROR, liveDataUnderTest.observedValues[SECOND_RESPONSE]?.peekContent()?.responseType)
@@ -98,10 +93,7 @@ class GridMemesViewModelTest {
         }
     }
 
-    private fun <T> LiveData<T>.testObserver() = TestObserver<T>()
-        .also {
-            observeForever(it)
-        }
+    private fun <T> LiveData<T>.testObserver() = TestObserver<T>().also { observeForever(it) }
 
     companion object {
         const val FIRST_RESPONSE = 0

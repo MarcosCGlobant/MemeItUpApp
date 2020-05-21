@@ -12,7 +12,7 @@ class MemeRepository {
     private val api: ServiceGenerator = ServiceGenerator()
     private val mapper: MemesMapperService = MemesMapperService()
 
-    fun getMemes(): Result<List<Meme>> {
+    fun getMemesFromApi(): Result<List<Meme>> {
         try {
             val callResponse = api.createService(ServiceApi::class.java).getMemes()
             val response = callResponse.execute()
