@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.memeitupapp.R
 import com.example.memeitupapp.data.entity.Meme
+import com.example.memeitupapp.data.repository.MemeService
 import com.example.memeitupapp.ui.adapter.GridMemesAdapter
 import com.example.memeitupapp.ui.contract.GridMemesContract
 import com.example.memeitupapp.ui.gridmemes.model.GridMemesModel
@@ -31,10 +32,11 @@ class GridMemesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        gridMemesViewModel = ViewModelProvider(this, viewModelFactory { GridMemesViewModel(GridMemesModel()) })
+        gridMemesViewModel = ViewModelProvider(this, viewModelFactory {
+            GridMemesViewModel(GridMemesModel(MemeService())) })
             .get(GridMemesViewModel::class.java)
         gridMemesViewModel.fetchMemes()
-        gridMemesViewModel.mainState.observe(::getLifecycle, ::updateUI)
+        gridMemesViewModel.getLiveData().observe(::getLifecycle, ::updateUI)
     }
 
     private fun showErrorMsg(errorMessage: String?) {

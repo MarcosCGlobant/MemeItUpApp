@@ -4,7 +4,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import com.example.memeitupapp.data.entity.Meme
-import com.example.memeitupapp.ui.listmemes.model.ListMemesModel
+import com.example.memeitupapp.ui.contract.ListMemesContract
 import com.example.memeitupapp.ui.listmemes.viewmodel.ListMemesViewModel
 import com.example.memeitupapp.util.Result
 import com.example.memeitupapp.util.Status
@@ -36,9 +36,9 @@ class ListMemesViewModelTest {
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
 
-    private lateinit var subject: ListMemesViewModel
+    private lateinit var subject: ListMemesContract.ViewModel
     private var memes: List<Meme> = mock()
-    private val mockedListMemeModel: ListMemesModel = mock()
+    private val mockedListMemeModel: ListMemesContract.Model = mock()
 
     @ExperimentalCoroutinesApi
     @ObsoleteCoroutinesApi
@@ -60,7 +60,7 @@ class ListMemesViewModelTest {
     @Test
     fun `on loading list of memes successfully`() {
         val mockedMemesResult: Result.Success<List<Meme>> = mock()
-        val liveDataUnderTest = subject.mainState.testObserver()
+        val liveDataUnderTest = subject.getLiveData().testObserver()
         whenever(mockedListMemeModel.getMemes()).thenReturn(mockedMemesResult)
         whenever(mockedMemesResult.data).thenReturn(memes)
 
@@ -75,7 +75,7 @@ class ListMemesViewModelTest {
     @Test
     fun `on loading list of memes with error connection`() {
         val mockedMemesResult: Result.Failure = mock()
-        val liveDataUnderTest = subject.mainState.testObserver()
+        val liveDataUnderTest = subject.getLiveData().testObserver()
         whenever(mockedListMemeModel.getMemes()).thenReturn(mockedMemesResult)
 
         runBlocking {

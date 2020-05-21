@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.memeitupapp.data.entity.Meme
 import com.example.memeitupapp.ui.contract.GridMemesContract
-import com.example.memeitupapp.ui.gridmemes.model.GridMemesModel
 import com.example.memeitupapp.util.Data
 import com.example.memeitupapp.util.Event
 import com.example.memeitupapp.util.Result
@@ -15,9 +14,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class GridMemesViewModel(private val gridMemesModel: GridMemesModel) : ViewModel(), GridMemesContract.ViewModel {
+class GridMemesViewModel(private val gridMemesModel: GridMemesContract.Model) : ViewModel(), GridMemesContract.ViewModel {
     private var mutableMainState: MutableLiveData<Event<Data<List<Meme>>>> = MutableLiveData()
-    override val mainState: LiveData<Event<Data<List<Meme>>>> = mutableMainState
+    override fun getLiveData(): LiveData<Event<Data<List<Meme>>>> = mutableMainState
 
     override fun fetchMemes() = viewModelScope.launch {
         mutableMainState.postValue(Event(Data(responseType = Status.LOADING)))

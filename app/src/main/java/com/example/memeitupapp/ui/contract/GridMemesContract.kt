@@ -9,7 +9,7 @@ import kotlinx.coroutines.Job
 
 interface GridMemesContract {
     interface ViewModel {
-        val mainState: LiveData<Event<Data<List<Meme>>>>
+        fun getLiveData(): LiveData<Event<Data<List<Meme>>>>
         fun fetchMemes(): Job
     }
 

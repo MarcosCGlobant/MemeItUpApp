@@ -4,7 +4,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import com.example.memeitupapp.data.entity.Meme
-import com.example.memeitupapp.ui.gridmemes.model.GridMemesModel
+import com.example.memeitupapp.ui.contract.GridMemesContract
 import com.example.memeitupapp.ui.gridmemes.viewmodel.GridMemesViewModel
 import com.example.memeitupapp.util.Result
 import com.example.memeitupapp.util.Status
@@ -36,9 +36,9 @@ class GridMemesViewModelTest {
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
 
-    private lateinit var subject: GridMemesViewModel
+    private lateinit var subject: GridMemesContract.ViewModel
     private var memes: List<Meme> = mock()
-    private val mockedGridMemesModel: GridMemesModel = mock()
+    private val mockedGridMemesModel: GridMemesContract.Model = mock()
 
     @ExperimentalCoroutinesApi
     @ObsoleteCoroutinesApi
@@ -60,7 +60,7 @@ class GridMemesViewModelTest {
     @Test
     fun `on loading grid of memes successfully`() {
         val mockedMemesResult: Result.Success<List<Meme>> = mock()
-        val liveDataUnderTest = subject.mainState.testObserver()
+        val liveDataUnderTest = subject.getLiveData().testObserver()
         whenever(mockedGridMemesModel.getMemes()).thenReturn(mockedMemesResult)
         whenever(mockedMemesResult.data).thenReturn(memes)
 
@@ -75,7 +75,7 @@ class GridMemesViewModelTest {
     @Test
     fun `on loading grid of memes with error connection`() {
         val mockedMemesResult: Result.Failure = mock()
-        val liveDataUnderTest = subject.mainState.testObserver()
+        val liveDataUnderTest = subject.getLiveData().testObserver()
         whenever(mockedGridMemesModel.getMemes()).thenReturn(mockedMemesResult)
 
         runBlocking {

@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.memeitupapp.R
 import com.example.memeitupapp.data.entity.Meme
+import com.example.memeitupapp.data.repository.MemeService
 import com.example.memeitupapp.ui.adapter.ListMemesAdapter
 import com.example.memeitupapp.ui.contract.ListMemesContract
 import com.example.memeitupapp.ui.listmemes.model.ListMemesModel
@@ -31,10 +32,11 @@ class ListMemesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        listMemesViewModel = ViewModelProvider(this, viewModelFactory { ListMemesViewModel(ListMemesModel()) })
+        listMemesViewModel = ViewModelProvider(this, viewModelFactory {
+            ListMemesViewModel(ListMemesModel(MemeService())) })
             .get(ListMemesViewModel::class.java)
         listMemesViewModel.fetchMemes()
-        listMemesViewModel.mainState.observe(::getLifecycle, ::updateUI)
+        listMemesViewModel.getLiveData().observe(::getLifecycle, ::updateUI)
     }
 
     private fun showErrorMsg(errorMessage: String?) {

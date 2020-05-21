@@ -7,7 +7,7 @@ import com.example.memeitupapp.data.service.api.ServiceApi
 import com.example.memeitupapp.util.NOT_FOUND
 import com.example.memeitupapp.util.Result
 
-class MemeRepository {
+class MemeService {
 
     private val api: ServiceGenerator = ServiceGenerator()
     private val mapper: MemesMapperService = MemesMapperService()
