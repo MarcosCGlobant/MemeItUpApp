@@ -27,6 +27,7 @@ class GridMemesViewModel(private val gridMemesModel: GridMemesContract.Model) : 
                 }
                 is Result.Success -> {
                     mutableMainState.postValue(Event(Data(responseType = Status.GET_MEMES_SUCCESS, data = result.data)))
+
                 }
             }
         }
