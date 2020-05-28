@@ -7,12 +7,10 @@ class MemesMapperService : BaseMapper<MemeResponse, Meme> {
 
     override fun transformMeme(type: MemeResponse): Meme = Meme(
         type.ID,
-        type.bottomText,
         type.image,
         type.name,
         type.rank,
-        type.tags,
-        type.topText
+        type.tags
     )
 
     fun transform(memeResponse: List<MemeResponse>): List<Meme> = memeResponse.map { transformMeme(it) }

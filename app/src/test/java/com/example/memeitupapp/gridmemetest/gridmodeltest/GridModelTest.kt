@@ -1,4 +1,4 @@
-package com.example.memeitupapp.gridmodeltest
+package com.example.memeitupapp.gridmemetest.gridmodeltest
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.memeitupapp.data.entity.Meme
@@ -8,8 +8,8 @@ import com.example.memeitupapp.ui.gridmemes.model.GridMemesModel
 import com.example.memeitupapp.util.Result
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
-import junit.framework.Assert.assertEquals
 import kotlinx.coroutines.runBlocking
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test

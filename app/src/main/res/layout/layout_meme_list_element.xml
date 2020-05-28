@@ -7,13 +7,12 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white">
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/list_memes_element_text_view"
             style="@style/TextViewMemesElement"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -24,7 +23,6 @@
             android:id="@+id/list_memes_element_image_view"
             style="@style/ImageViewMemesElement"
             android:contentDescription="@string/meme_image"
-            android:scaleType="fitXY"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/list_memes_element_barrier"
             app:layout_constraintStart_toStartOf="parent"

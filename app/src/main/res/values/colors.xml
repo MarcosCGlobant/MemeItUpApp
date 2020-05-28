@@ -8,4 +8,5 @@
     <color name="background_grey">#bebebe</color>
     <color name="activity_main_app_name_text_color">@color/white</color>
     <color name="card_view_background_color">#E6E6E6</color>
+    <color name="white_with_opacity">#59FFFFFF</color>
 </resources>

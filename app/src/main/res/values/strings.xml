@@ -8,4 +8,9 @@
     <string name="grid_of_memes">Grid of Memes</string>
     <string name="list_of_memes">List of Memes</string>
     <string name="meme_image">meme image</string>
+    <string name="tag">tag</string>
+    <string name="meme_tags">Tags</string>
+    <string name="meme_origin">Origin</string>
+    <string name="meme_rank">Rank</string>
+    <string name="close_button_image">close button image</string>
 </resources>

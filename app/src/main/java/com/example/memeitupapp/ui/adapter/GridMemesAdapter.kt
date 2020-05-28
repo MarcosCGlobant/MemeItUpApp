@@ -10,7 +10,7 @@ import com.example.memeitupapp.R
 import com.example.memeitupapp.data.entity.Meme
 import kotlinx.android.synthetic.main.layout_meme_grid_element.view.grid_memes_element_image_view
 
-class GridMemesAdapter : RecyclerView.Adapter<GridMemesAdapter.ViewHolder>() {
+class GridMemesAdapter(private val onMemeClicked: (Meme) -> Unit) : RecyclerView.Adapter<GridMemesAdapter.ViewHolder>() {
 
     private val memes = mutableListOf<Meme>()
 
@@ -20,7 +20,7 @@ class GridMemesAdapter : RecyclerView.Adapter<GridMemesAdapter.ViewHolder>() {
                 R.layout.layout_meme_grid_element,
                 parent,
                 false
-            )
+            ), onMemeClicked
         )
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -33,10 +33,11 @@ class GridMemesAdapter : RecyclerView.Adapter<GridMemesAdapter.ViewHolder>() {
         memes.addAll(memesList)
     }
 
-    class ViewHolder(itemView: View) :
+    class ViewHolder(itemView: View, private val onMemeClicked: (Meme) -> Unit) :
         RecyclerView.ViewHolder(itemView) {
 
         fun bind(item: Meme) = with(itemView) {
+            setOnClickListener { onMemeClicked(item) }
             val requestOptions = RequestOptions()
                 .placeholder(R.drawable.imagenotavailable)
                 .error(R.drawable.imagenotavailable)

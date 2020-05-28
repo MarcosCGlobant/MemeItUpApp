@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/CardViewGrid"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/dialog_background"
+            android:padding="@dimen/layout_fragment_meme_detail_constraint_padding">
+
+            <TextView
+                android:id="@+id/dialog_container_success_text_view_name"
+                style="@style/DialogMemeName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@+id/dialog_container_success_image_view_meme_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dialog_container_success_close_button" />
+
+            <ImageView
+                android:id="@+id/dialog_container_success_image_view_meme_image"
+                style="@style/ImageViewDialog"
+                android:contentDescription="@string/meme_image"
+                app:layout_constraintBottom_toTopOf="@+id/dialog_container_success_text_view_origin_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dialog_container_success_text_view_name" />
+
+            <TextView
+                android:id="@+id/dialog_container_success_text_view_origin_title"
+                style="@style/DialogOrigin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@+id/dialog_container_success_text_view_origin_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dialog_container_success_image_view_meme_image" />
+
+            <TextView
+                android:id="@+id/dialog_container_success_text_view_origin_text"
+                style="@style/DialogBaseConfig"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@+id/dialog_container_success_text_view_rank_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dialog_container_success_text_view_origin_title" />
+
+            <TextView
+                android:id="@+id/dialog_container_success_text_view_rank_title"
+                style="@style/DialogRank"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@+id/dialog_container_success_text_view_rank_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dialog_container_success_text_view_origin_text" />
+
+            <TextView
+                android:id="@+id/dialog_container_success_text_view_rank_text"
+                style="@style/DialogBaseConfig"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@+id/dialog_container_success_text_view_tags_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dialog_container_success_text_view_rank_title" />
+
+            <TextView
+                android:id="@+id/dialog_container_success_text_view_tags_title"
+                style="@style/DialogTags"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@+id/dialog_container_success_text_view_tags_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dialog_container_success_text_view_rank_title" />
+
+            <TextView
+                android:id="@+id/dialog_container_success_text_view_tags_text"
+                style="@style/DialogBaseConfig"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dialog_container_success_text_view_tags_title" />
+
+            <ImageButton
+                android:id="@+id/dialog_container_success_close_button"
+                style="@style/DialogCloseButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/close_button_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.cardview.widget.CardView>
