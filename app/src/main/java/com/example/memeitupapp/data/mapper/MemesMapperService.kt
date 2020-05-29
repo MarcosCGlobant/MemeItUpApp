@@ -9,8 +9,7 @@ class MemesMapperService : BaseMapper<MemeResponse, Meme> {
         type.ID,
         type.image,
         type.name,
-        type.rank,
-        type.tags
+        type.rank
     )
 
     fun transform(memeResponse: List<MemeResponse>): List<Meme> = memeResponse.map { transformMeme(it) }

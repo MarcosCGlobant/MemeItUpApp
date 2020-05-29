@@ -13,11 +13,11 @@
     <dimen name="card_view_grid_corner_radius">30dp</dimen>
     <dimen name="card_view_list_corner_radius">15dp</dimen>
     <dimen name="card_view_list_content_padding">5dp</dimen>
+    <dimen name="layout_fragment_card_view_margin">7dp</dimen>
     <dimen name="layout_fragment_meme_detail_titles_text_size">16sp</dimen>
     <dimen name="layout_fragment_meme_detail_meme_name_text_size">18sp</dimen>
     <dimen name="layout_fragment_meme_detail_constraint_padding">10dp</dimen>
     <dimen name="layout_fragment_meme_detail_margin_bottom">5dp</dimen>
-    <dimen name="layout_fragment_card_view_margin">7dp</dimen>
     <dimen name="layout_fragment_meme_detail_image_width">120dp</dimen>
     <dimen name="layout_fragment_meme_detail_image_height">120dp</dimen>
     <dimen name="layout_fragment_meme_detail_error_image_width">200dp</dimen>
