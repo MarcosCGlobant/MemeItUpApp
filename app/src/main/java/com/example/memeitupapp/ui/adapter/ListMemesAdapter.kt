@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.request.RequestOptions
 import com.example.memeitupapp.R
 import com.example.memeitupapp.data.entity.Meme
@@ -46,6 +47,7 @@ class ListMemesAdapter : RecyclerView.Adapter<ListMemesAdapter.ViewHolder>() {
             Glide.with(itemView.context)
                 .applyDefaultRequestOptions(requestOptions)
                 .load(item.image)
+                .transform(CircleCrop())
                 .into(list_memes_element_image_view)
         }
     }

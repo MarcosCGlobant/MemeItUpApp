@@ -5,12 +5,13 @@
     <dimen name="activity_main_app_icon_width">75dp</dimen>
     <dimen name="activity_main_app_icon_height">75dp</dimen>
     <dimen name="activity_main_app_name_text_size">35sp</dimen>
-    <dimen name="layout_meme_list_element_image_width">80dp</dimen>
-    <dimen name="layout_meme_list_element_image_height">80dp</dimen>
+    <dimen name="layout_meme_element_image_width">80dp</dimen>
+    <dimen name="layout_meme_element_image_height">80dp</dimen>
     <dimen name="layout_meme_list_element_text_view_text_size">16sp</dimen>
     <dimen name="card_view_card_elevation">4dp</dimen>
     <dimen name="card_view_max_card_elevation">6dp</dimen>
     <dimen name="card_view_grid_corner_radius">30dp</dimen>
     <dimen name="card_view_list_corner_radius">15dp</dimen>
     <dimen name="card_view_list_content_padding">5dp</dimen>
+    <dimen name="layout_fragment_card_view_margin">7dp</dimen>
 </resources>
