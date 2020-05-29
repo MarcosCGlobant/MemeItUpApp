@@ -58,7 +58,7 @@ class MemeDetailViewModelTest {
     }
 
     @Test
-    fun `on loading grid of memes successfully`() {
+    fun `on loading meme details successfully`() {
         val mockedMemeResult: Result.Success<MemeDetail> = mock()
         val liveDataUnderTest = subject.getLiveData().testObserver()
         whenever(mockedMemeDetailModel.getMeme(MEME_ID)).thenReturn(mockedMemeResult)
@@ -73,7 +73,7 @@ class MemeDetailViewModelTest {
     }
 
     @Test
-    fun `on loading grid of memes with error connection`() {
+    fun `on loading meme details with error connection`() {
         val mockedMemeResult: Result.Failure = mock()
         val liveDataUnderTest = subject.getLiveData().testObserver()
         whenever(mockedMemeDetailModel.getMeme(MEME_ID)).thenReturn(mockedMemeResult)

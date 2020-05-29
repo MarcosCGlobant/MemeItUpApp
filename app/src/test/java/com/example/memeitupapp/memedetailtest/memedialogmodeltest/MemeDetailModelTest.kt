@@ -27,7 +27,7 @@ class MemeDetailModelTest {
     }
 
     @Test
-    fun `on get memes for grid successfully`() {
+    fun `on get meme details successfully`() {
         val mockedMemeResult: Result.Success<MemeDetail> = mock()
         whenever(memeService.getMemeByIdFromApi(MEME_ID)).thenReturn(mockedMemeResult)
 
@@ -37,7 +37,7 @@ class MemeDetailModelTest {
     }
 
     @Test
-    fun `on get memes for grid with error connection`() {
+    fun `on get meme details with error connection`() {
         val mockedMemeResult: Result.Failure = mock()
         whenever(memeService.getMemeByIdFromApi(MEME_ID)).thenReturn(mockedMemeResult)
 

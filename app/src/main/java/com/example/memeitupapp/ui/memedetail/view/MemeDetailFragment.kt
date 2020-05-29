@@ -77,7 +77,7 @@ class MemeDetailFragment : DialogFragment() {
         layout_fragment_meme_detail_progress_bar.visibility = View.GONE
         meme?.let {
             dialog_container_success_text_view_name.text = it.name
-            if (it.origin == "") {
+            if (it.origin == EMPTY_STRING) {
                 dialog_container_success_text_view_origin_text.text = ORIGIN_NOT_FOUND
             } else {
                 dialog_container_success_text_view_origin_text.text = it.origin
@@ -98,6 +98,7 @@ class MemeDetailFragment : DialogFragment() {
     }
 
     companion object {
+        private const val EMPTY_STRING = ""
         private const val ORIGIN_NOT_FOUND = "Origin not found"
         private const val MEME_ID = "meme_id"
         fun newInstance(meme_id: Int): MemeDetailFragment {
