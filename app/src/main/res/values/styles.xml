@@ -1,4 +1,5 @@
 <resources>
+
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -24,18 +25,21 @@
     </style>
 
     <style name="ImageViewMemesElement">
-        <item name="android:layout_width">@dimen/layout_meme_list_element_image_width</item>
-        <item name="android:layout_height">@dimen/layout_meme_list_element_image_height</item>
+        <item name="android:layout_width">@dimen/layout_meme_element_image_width</item>
+        <item name="android:layout_height">@dimen/layout_meme_element_image_height</item>
+        <item name="android:scaleType">fitXY</item>
     </style>
 
     <style name="TextViewMemesElement">
         <item name="android:textSize">@dimen/layout_meme_list_element_text_view_text_size</item>
+        <item name="android:textAlignment">center</item>
     </style>
 
     <style name="BaseCardView">
         <item name="cardBackgroundColor">@color/card_view_background_color</item>
         <item name="cardElevation">@dimen/card_view_card_elevation</item>
         <item name="cardMaxElevation">@dimen/card_view_max_card_elevation</item>
+        <item name="android:layout_margin">@dimen/layout_fragment_card_view_margin</item>
     </style>
 
     <style name="CardViewGrid" parent="BaseCardView">
