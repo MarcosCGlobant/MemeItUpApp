@@ -15,6 +15,7 @@ import com.example.memeitupapp.ui.adapter.ListMemesAdapter
 import com.example.memeitupapp.ui.contract.ListMemesContract
 import com.example.memeitupapp.ui.listmemes.model.ListMemesModel
 import com.example.memeitupapp.ui.listmemes.viewmodel.ListMemesViewModel
+import com.example.memeitupapp.ui.memedetail.view.MemeDetailFragment
 import com.example.memeitupapp.util.Data
 import com.example.memeitupapp.util.Event
 import com.example.memeitupapp.util.MemeViewModelFactory
@@ -65,7 +66,10 @@ class ListMemesFragment : Fragment() {
 
     private fun showMemes(memes: List<Meme>?) {
         memes?.let {
-            val listMemesAdapter = ListMemesAdapter()
+            val listMemesAdapter = ListMemesAdapter { meme ->
+                val memeFragment = MemeDetailFragment.newInstance(meme.id)
+                memeFragment.show(childFragmentManager, getString(R.string.tag))
+            }
             listMemesAdapter.submitList(memes)
             layout_fragment_list_memes_recycler_view.layoutManager = LinearLayoutManager(context)
             layout_fragment_list_memes_recycler_view.adapter = listMemesAdapter

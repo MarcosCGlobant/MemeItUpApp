@@ -15,6 +15,7 @@ import com.example.memeitupapp.ui.adapter.GridMemesAdapter
 import com.example.memeitupapp.ui.contract.GridMemesContract
 import com.example.memeitupapp.ui.gridmemes.model.GridMemesModel
 import com.example.memeitupapp.ui.gridmemes.viewmodel.GridMemesViewModel
+import com.example.memeitupapp.ui.memedetail.view.MemeDetailFragment
 import com.example.memeitupapp.util.Data
 import com.example.memeitupapp.util.Event
 import com.example.memeitupapp.util.MemeViewModelFactory
@@ -65,7 +66,10 @@ class GridMemesFragment : Fragment() {
 
     private fun showMemes(memes: List<Meme>?) {
         memes?.let {
-            val gridMemesAdapter = GridMemesAdapter()
+            val gridMemesAdapter = GridMemesAdapter { meme ->
+                val memeFragment = MemeDetailFragment.newInstance(meme.id)
+                memeFragment.show(childFragmentManager, getString(R.string.tag))
+            }
             gridMemesAdapter.submitList(memes)
             layout_fragment_grid_memes_recycler_view.layoutManager = GridLayoutManager(context, COLUMNS)
             layout_fragment_grid_memes_recycler_view.adapter = gridMemesAdapter

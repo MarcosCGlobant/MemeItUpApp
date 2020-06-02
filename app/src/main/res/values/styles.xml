@@ -50,4 +50,48 @@
         <item name="cardCornerRadius">@dimen/card_view_list_corner_radius</item>
         <item name="contentPadding">@dimen/card_view_list_content_padding</item>
     </style>
+
+    <style name="DialogBaseConfig">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginBottom">@dimen/layout_fragment_meme_detail_margin_bottom</item>
+    </style>
+
+    <style name="ImageViewDialog">
+        <item name="android:layout_width">@dimen/layout_fragment_meme_detail_image_width</item>
+        <item name="android:layout_height">@dimen/layout_fragment_meme_detail_image_height</item>
+        <item name="android:layout_marginBottom">@dimen/layout_fragment_meme_detail_margin_bottom</item>
+        <item name="android:scaleType">fitXY</item>
+    </style>
+
+    <style name="ImageViewDialogError" parent="ImageViewDialog">
+        <item name="android:layout_width">@dimen/layout_fragment_meme_detail_error_image_width</item>
+        <item name="android:layout_height">@dimen/layout_fragment_meme_detail_error_image_height</item>
+    </style>
+
+    <style name="DialogTitlesText" parent="DialogBaseConfig">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/layout_fragment_meme_detail_titles_text_size</item>
+    </style>
+
+    <style name="DialogOrigin" parent="DialogTitlesText">
+        <item name="android:text">@string/meme_origin</item>
+    </style>
+
+    <style name="DialogRank" parent="DialogTitlesText">
+        <item name="android:text">@string/meme_rank</item>
+    </style>
+
+    <style name="DialogTags" parent="DialogTitlesText">
+        <item name="android:text">@string/meme_tags</item>
+    </style>
+
+    <style name="DialogMemeName" parent="DialogTitlesText">
+        <item name="android:textSize">@dimen/layout_fragment_meme_detail_meme_name_text_size</item>
+    </style>
+
+    <style name="DialogCloseButton">
+        <item name="android:src">@drawable/ic_close</item>
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
 </resources>
