@@ -8,7 +8,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.request.RequestOptions
 import com.example.memeitupapp.R
-import com.example.memeitupapp.data.entity.Meme
+import com.globant.domain.entity.Meme
 import kotlinx.android.synthetic.main.layout_meme_list_element.view.list_memes_element_image_view
 import kotlinx.android.synthetic.main.layout_meme_list_element.view.list_memes_element_text_view
 

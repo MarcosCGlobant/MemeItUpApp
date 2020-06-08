@@ -4,11 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.memeitupapp.data.entity.Meme
+import com.globant.domain.entity.Meme
 import com.example.memeitupapp.ui.contract.GridMemesContract
 import com.example.memeitupapp.util.Data
 import com.example.memeitupapp.util.Event
-import com.example.memeitupapp.util.Result
+import com.globant.domain.util.Result
 import com.example.memeitupapp.util.Status
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

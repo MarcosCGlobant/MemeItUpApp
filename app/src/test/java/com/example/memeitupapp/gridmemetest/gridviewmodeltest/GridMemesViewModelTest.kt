@@ -3,10 +3,10 @@ package com.example.memeitupapp.gridmemetest.gridviewmodeltest
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
-import com.example.memeitupapp.data.entity.Meme
+import com.globant.domain.entity.Meme
 import com.example.memeitupapp.ui.contract.GridMemesContract
 import com.example.memeitupapp.ui.gridmemes.viewmodel.GridMemesViewModel
-import com.example.memeitupapp.util.Result
+import com.globant.domain.util.Result
 import com.example.memeitupapp.util.Status
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever

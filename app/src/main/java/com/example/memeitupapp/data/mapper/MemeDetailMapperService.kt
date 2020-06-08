@@ -1,6 +1,6 @@
 package com.example.memeitupapp.data.mapper
 
-import com.example.memeitupapp.data.entity.MemeDetail
+import com.globant.domain.entity.MemeDetail
 import com.example.memeitupapp.data.service.response.MemeDetailResponse
 
 class MemeDetailMapperService : BaseMapper<MemeDetailResponse, MemeDetail> {

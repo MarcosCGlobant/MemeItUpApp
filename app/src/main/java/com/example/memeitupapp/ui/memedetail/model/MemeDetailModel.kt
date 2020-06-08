@@ -1,9 +1,9 @@
 package com.example.memeitupapp.ui.memedetail.model
 
-import com.example.memeitupapp.data.entity.MemeDetail
+import com.globant.domain.entity.MemeDetail
 import com.example.memeitupapp.data.repository.MemeService
 import com.example.memeitupapp.ui.contract.MemesDetailsContract
-import com.example.memeitupapp.util.Result
+import com.globant.domain.util.Result
 
 class MemeDetailModel(private val memesService: MemeService) : MemesDetailsContract.Model {
 

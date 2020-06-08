@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.memeitupapp.R
-import com.example.memeitupapp.data.entity.Meme
+import com.globant.domain.entity.Meme
 import com.example.memeitupapp.data.repository.MemeService
 import com.example.memeitupapp.ui.adapter.GridMemesAdapter
 import com.example.memeitupapp.ui.contract.GridMemesContract
