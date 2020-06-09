@@ -1,4 +1,4 @@
-package com.example.memeitupapp.util
+package com.globant.domain.util
 
 const val DEFAULT_STRING = "DEFAULT STRING"
 const val DEFAULT_ID = 0

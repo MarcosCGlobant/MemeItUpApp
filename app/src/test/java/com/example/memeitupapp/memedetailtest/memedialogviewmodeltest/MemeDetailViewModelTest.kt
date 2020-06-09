@@ -3,10 +3,10 @@ package com.example.memeitupapp.memedetailtest.memedialogviewmodeltest
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
-import com.example.memeitupapp.data.entity.MemeDetail
+import com.globant.domain.entity.MemeDetail
 import com.example.memeitupapp.ui.contract.MemesDetailsContract
 import com.example.memeitupapp.ui.memedetail.viewmodel.MemeDetailViewModel
-import com.example.memeitupapp.util.Result
+import com.globant.domain.util.Result
 import com.example.memeitupapp.util.Status
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever

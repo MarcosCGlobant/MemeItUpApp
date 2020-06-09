@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.memeitupapp.R
-import com.example.memeitupapp.data.entity.Meme
+import com.globant.domain.entity.Meme
 import kotlinx.android.synthetic.main.layout_meme_grid_element.view.grid_memes_element_image_view
 
 class GridMemesAdapter(private val onMemeClicked: (Meme) -> Unit) : RecyclerView.Adapter<GridMemesAdapter.ViewHolder>() {

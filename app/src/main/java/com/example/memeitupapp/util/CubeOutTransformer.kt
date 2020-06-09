@@ -2,6 +2,7 @@ package com.example.memeitupapp.util
 
 import android.view.View
 import androidx.viewpager2.widget.ViewPager2
+import com.globant.domain.util.TWENTY
 
 class CubeOutTransformer : ViewPager2.PageTransformer {
     private val distanceMultiplier: Int = TWENTY

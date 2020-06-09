@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.memeitupapp.R
-import com.example.memeitupapp.data.entity.MemeDetail
+import com.globant.domain.entity.MemeDetail
 import com.example.memeitupapp.data.repository.MemeService
 import com.example.memeitupapp.ui.contract.MemesDetailsContract
 import com.example.memeitupapp.ui.memedetail.model.MemeDetailModel
