@@ -10,7 +10,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.memeitupapp.R
 import com.globant.domain.entity.Meme
-import com.globant.data.service.MemeService
 import com.example.memeitupapp.ui.adapter.ListMemesAdapter
 import com.example.memeitupapp.ui.contract.ListMemesContract
 import com.example.memeitupapp.ui.listmemes.model.ListMemesModel
@@ -20,6 +19,7 @@ import com.example.memeitupapp.util.Data
 import com.example.memeitupapp.util.Event
 import com.example.memeitupapp.util.MemeViewModelFactory
 import com.example.memeitupapp.util.Status
+import com.globant.domain.service.MemeService
 import kotlinx.android.synthetic.main.layout_fragment_list_memes.layout_fragment_list_memes_progress_bar
 import kotlinx.android.synthetic.main.layout_fragment_list_memes.layout_fragment_list_memes_recycler_view
 
@@ -33,8 +33,9 @@ class ListMemesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //TODO: Fix when di module implemented
         listMemesViewModel = ViewModelProvider(this, MemeViewModelFactory.viewModelFactory {
-            ListMemesViewModel(ListMemesModel(com.globant.data.service.MemeService()))
+            ListMemesViewModel(ListMemesModel(MemeService()))
         })
             .get(ListMemesViewModel::class.java)
         listMemesViewModel.fetchMemes()

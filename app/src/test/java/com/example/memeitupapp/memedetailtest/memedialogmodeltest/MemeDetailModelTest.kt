@@ -2,9 +2,9 @@ package com.example.memeitupapp.memedetailtest.memedialogmodeltest
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.globant.domain.entity.MemeDetail
-import com.globant.data.service.MemeService
 import com.example.memeitupapp.ui.contract.MemesDetailsContract
 import com.example.memeitupapp.ui.memedetail.model.MemeDetailModel
+import com.globant.domain.service.MemeService
 import com.globant.domain.util.Result
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
@@ -18,7 +18,7 @@ class MemeDetailModelTest {
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
 
-    private val memeService: com.globant.data.service.MemeService = mock()
+    private val memeService: MemeService = mock()
     private lateinit var memeDetailModel: MemesDetailsContract.Model
 
     @Before

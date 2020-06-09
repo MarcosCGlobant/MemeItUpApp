@@ -2,9 +2,9 @@ package com.example.memeitupapp.gridmemetest.gridmodeltest
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.globant.domain.entity.Meme
-import com.globant.data.service.MemeService
 import com.example.memeitupapp.ui.contract.GridMemesContract
 import com.example.memeitupapp.ui.gridmemes.model.GridMemesModel
+import com.globant.domain.service.MemeService
 import com.globant.domain.util.Result
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
@@ -22,7 +22,7 @@ class GridModelTest {
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
 
-    private val memeService: com.globant.data.service.MemeService = mock()
+    private val memeService: MemeService = mock()
     private lateinit var gridMemesModel: GridMemesContract.Model
 
     @Before
