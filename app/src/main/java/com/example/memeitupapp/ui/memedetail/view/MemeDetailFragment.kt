@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.memeitupapp.R
 import com.globant.domain.entity.MemeDetail
-import com.example.memeitupapp.data.repository.MemeService
+import com.globant.data.service.MemeService
 import com.example.memeitupapp.ui.contract.MemesDetailsContract
 import com.example.memeitupapp.ui.memedetail.model.MemeDetailModel
 import com.example.memeitupapp.ui.memedetail.viewmodel.MemeDetailViewModel
@@ -38,7 +38,7 @@ class MemeDetailFragment : DialogFragment() {
         val rootView = inflater.inflate(R.layout.layout_fragment_meme_details, container, false)
         dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
         memeDetailsViewModel = ViewModelProvider(this, MemeViewModelFactory.viewModelFactory {
-            MemeDetailViewModel(MemeDetailModel(MemeService()))
+            MemeDetailViewModel(MemeDetailModel(com.globant.data.service.MemeService()))
         })
             .get(MemeDetailViewModel::class.java)
         arguments?.getInt(MEME_ID)?.let {

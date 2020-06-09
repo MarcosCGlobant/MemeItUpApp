@@ -1,22 +1,22 @@
-package com.example.memeitupapp.data.repository
+package com.globant.data.service
 
+import com.globant.data.ServiceGenerator
+import com.globant.data.mapper.MemeDetailMapperService
+import com.globant.data.mapper.MemesMapperService
 import com.globant.domain.entity.Meme
 import com.globant.domain.entity.MemeDetail
-import com.example.memeitupapp.data.mapper.MemeDetailMapperService
-import com.example.memeitupapp.data.mapper.MemesMapperService
-import com.example.memeitupapp.data.service.ServiceGenerator
-import com.example.memeitupapp.data.service.api.ServiceApi
+import com.globant.data.service.api.ServiceApi
+import com.globant.domain.service.MemeService
 import com.globant.domain.util.NOT_FOUND
 import com.globant.domain.util.Result
 
-class MemeService {
+class MemeServiceImpl : MemeService {
 
-    private val api: ServiceGenerator = ServiceGenerator()
-    private val mapperDetails: MemeDetailMapperService = MemeDetailMapperService()
-    private val mapper: MemesMapperService = MemesMapperService()
+    private val api = ServiceGenerator()
+    private val mapperDetails = MemeDetailMapperService()
+    private val mapper = MemesMapperService()
 
-
-    fun getMemesFromApi(): Result<List<Meme>> {
+    override fun getMemesFromApi(): Result<List<Meme>> {
         try {
             val callResponse = api.createService(ServiceApi::class.java).getMemes()
             val response = callResponse.execute()
@@ -32,7 +32,7 @@ class MemeService {
         return Result.Failure(Exception(NOT_FOUND))
     }
 
-    fun getMemeByIdFromApi(memeId: Int): Result<MemeDetail> {
+    override fun getMemeByIdFromApi(memeId: Int): Result<MemeDetail> {
         try {
             val callResponse = api.createService(ServiceApi::class.java).getMemeById(memeId)
             val response = callResponse.execute()

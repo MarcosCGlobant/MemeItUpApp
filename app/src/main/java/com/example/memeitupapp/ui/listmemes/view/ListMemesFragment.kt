@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.memeitupapp.R
 import com.globant.domain.entity.Meme
-import com.example.memeitupapp.data.repository.MemeService
+import com.globant.data.service.MemeService
 import com.example.memeitupapp.ui.adapter.ListMemesAdapter
 import com.example.memeitupapp.ui.contract.ListMemesContract
 import com.example.memeitupapp.ui.listmemes.model.ListMemesModel
@@ -34,7 +34,7 @@ class ListMemesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         listMemesViewModel = ViewModelProvider(this, MemeViewModelFactory.viewModelFactory {
-            ListMemesViewModel(ListMemesModel(MemeService()))
+            ListMemesViewModel(ListMemesModel(com.globant.data.service.MemeService()))
         })
             .get(ListMemesViewModel::class.java)
         listMemesViewModel.fetchMemes()

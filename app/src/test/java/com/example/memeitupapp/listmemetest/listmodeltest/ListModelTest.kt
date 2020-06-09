@@ -2,7 +2,7 @@ package com.example.memeitupapp.listmemetest.listmodeltest
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.globant.domain.entity.Meme
-import com.example.memeitupapp.data.repository.MemeService
+import com.globant.data.service.MemeService
 import com.example.memeitupapp.ui.contract.ListMemesContract
 import com.example.memeitupapp.ui.listmemes.model.ListMemesModel
 import com.globant.domain.util.Result
@@ -22,7 +22,7 @@ class ListModelTest {
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
 
-    private val memeService: MemeService = mock()
+    private val memeService: com.globant.data.service.MemeService = mock()
     private lateinit var listMemesModel: ListMemesContract.Model
 
     @Before

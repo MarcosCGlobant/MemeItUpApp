@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.memeitupapp.R
 import com.globant.domain.entity.Meme
-import com.example.memeitupapp.data.repository.MemeService
+import com.globant.data.service.MemeService
 import com.example.memeitupapp.ui.adapter.GridMemesAdapter
 import com.example.memeitupapp.ui.contract.GridMemesContract
 import com.example.memeitupapp.ui.gridmemes.model.GridMemesModel
@@ -34,7 +34,7 @@ class GridMemesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         gridMemesViewModel = ViewModelProvider(this, MemeViewModelFactory.viewModelFactory {
-            GridMemesViewModel(GridMemesModel(MemeService()))
+            GridMemesViewModel(GridMemesModel(com.globant.data.service.MemeService()))
         })
             .get(GridMemesViewModel::class.java)
         gridMemesViewModel.fetchMemes()
