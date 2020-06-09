@@ -1,10 +1,10 @@
 package com.globant.data.mapper
 
 import com.globant.domain.entity.Meme
-import com.example.memeitupapp.data.service.response.MemeResponse
+import com.globant.data.service.response.MemeResponse
 
 class MemesMapperService :
-    com.globant.data.mapper.BaseMapper<MemeResponse, Meme> {
+    BaseMapper<MemeResponse, Meme> {
 
     override fun transformMeme(type: MemeResponse): Meme = Meme(
         type.ID,
