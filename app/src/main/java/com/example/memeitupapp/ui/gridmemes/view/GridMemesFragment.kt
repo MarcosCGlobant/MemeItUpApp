@@ -10,7 +10,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.memeitupapp.R
 import com.globant.domain.entity.Meme
-import com.example.memeitupapp.data.repository.MemeService
 import com.example.memeitupapp.ui.adapter.GridMemesAdapter
 import com.example.memeitupapp.ui.contract.GridMemesContract
 import com.example.memeitupapp.ui.gridmemes.model.GridMemesModel
@@ -20,6 +19,7 @@ import com.example.memeitupapp.util.Data
 import com.example.memeitupapp.util.Event
 import com.example.memeitupapp.util.MemeViewModelFactory
 import com.example.memeitupapp.util.Status
+import com.globant.domain.service.MemeService
 import kotlinx.android.synthetic.main.layout_fragment_grid_memes.layout_fragment_grid_memes_progress_bar
 import kotlinx.android.synthetic.main.layout_fragment_grid_memes.layout_fragment_grid_memes_recycler_view
 
@@ -33,6 +33,7 @@ class GridMemesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //TODO: Fix when di module implemented
         gridMemesViewModel = ViewModelProvider(this, MemeViewModelFactory.viewModelFactory {
             GridMemesViewModel(GridMemesModel(MemeService()))
         })

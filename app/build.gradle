@@ -36,8 +36,6 @@ dependencies {
     implementation lib.appcompat
     implementation lib.coreKtx
     implementation lib.constraintlayout
-    implementation lib.retrofit
-    implementation lib.retrofitgson
     implementation lib.androidxviewmodel
     implementation lib.kotlinxcoroutinesandroid
     implementation lib.kotlinxcoroutinescore

@@ -1,4 +1,4 @@
-package com.example.memeitupapp.data.mapper
+package com.globant.data.mapper
 
 interface BaseMapper<E, D> {
 

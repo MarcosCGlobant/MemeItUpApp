@@ -2,9 +2,9 @@ package com.example.memeitupapp.listmemetest.listmodeltest
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.globant.domain.entity.Meme
-import com.example.memeitupapp.data.repository.MemeService
 import com.example.memeitupapp.ui.contract.ListMemesContract
 import com.example.memeitupapp.ui.listmemes.model.ListMemesModel
+import com.globant.domain.service.MemeService
 import com.globant.domain.util.Result
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever

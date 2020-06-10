@@ -11,7 +11,6 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.memeitupapp.R
 import com.globant.domain.entity.MemeDetail
-import com.example.memeitupapp.data.repository.MemeService
 import com.example.memeitupapp.ui.contract.MemesDetailsContract
 import com.example.memeitupapp.ui.memedetail.model.MemeDetailModel
 import com.example.memeitupapp.ui.memedetail.viewmodel.MemeDetailViewModel
@@ -19,6 +18,7 @@ import com.example.memeitupapp.util.Data
 import com.example.memeitupapp.util.Event
 import com.example.memeitupapp.util.MemeViewModelFactory
 import com.example.memeitupapp.util.Status
+import com.globant.domain.service.MemeService
 import kotlinx.android.synthetic.main.dialog_container_error.view.dialog_container_error_close_button
 import kotlinx.android.synthetic.main.dialog_container_success.dialog_container_success_image_view_meme_image
 import kotlinx.android.synthetic.main.dialog_container_success.dialog_container_success_text_view_name
@@ -37,6 +37,7 @@ class MemeDetailFragment : DialogFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater.inflate(R.layout.layout_fragment_meme_details, container, false)
         dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
+        //TODO: Fix when di module implemented
         memeDetailsViewModel = ViewModelProvider(this, MemeViewModelFactory.viewModelFactory {
             MemeDetailViewModel(MemeDetailModel(MemeService()))
         })

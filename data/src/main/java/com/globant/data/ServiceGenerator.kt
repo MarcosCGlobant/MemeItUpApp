@@ -1,4 +1,4 @@
-package com.example.memeitupapp.data.service
+package com.globant.data
 
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
