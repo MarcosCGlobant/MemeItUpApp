@@ -51,4 +51,5 @@ dependencies {
     testImplementation lib.mockitokotlin2
     testImplementation lib.mockitocore
     testImplementation lib.mockitoinline
+    implementation lib.koinviewmodel
 }
