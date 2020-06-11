@@ -1,8 +1,8 @@
-package com.example.memeitupapp.data.entity
+package com.globant.domain.entity
 
-import com.example.memeitupapp.util.DEFAULT_ID
-import com.example.memeitupapp.util.DEFAULT_INT
-import com.example.memeitupapp.util.DEFAULT_STRING
+import com.globant.domain.util.DEFAULT_ID
+import com.globant.domain.util.DEFAULT_INT
+import com.globant.domain.util.DEFAULT_STRING
 
 data class MemeDetail(
     val ID: Int = DEFAULT_ID,

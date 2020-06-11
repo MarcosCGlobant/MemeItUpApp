@@ -6,18 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
-import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.memeitupapp.R
-import com.example.memeitupapp.data.entity.MemeDetail
-import com.example.memeitupapp.data.repository.MemeService
-import com.example.memeitupapp.ui.contract.MemesDetailsContract
-import com.example.memeitupapp.ui.memedetail.model.MemeDetailModel
+import com.globant.domain.entity.MemeDetail
 import com.example.memeitupapp.ui.memedetail.viewmodel.MemeDetailViewModel
 import com.example.memeitupapp.util.Data
 import com.example.memeitupapp.util.Event
-import com.example.memeitupapp.util.MemeViewModelFactory
 import com.example.memeitupapp.util.Status
 import kotlinx.android.synthetic.main.dialog_container_error.view.dialog_container_error_close_button
 import kotlinx.android.synthetic.main.dialog_container_success.dialog_container_success_image_view_meme_image
@@ -29,18 +24,16 @@ import kotlinx.android.synthetic.main.dialog_container_success.view.dialog_conta
 import kotlinx.android.synthetic.main.layout_fragment_meme_details.dialog_error
 import kotlinx.android.synthetic.main.layout_fragment_meme_details.dialog_success
 import kotlinx.android.synthetic.main.layout_fragment_meme_details.layout_fragment_meme_detail_progress_bar
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MemeDetailFragment : DialogFragment() {
 
-    private lateinit var memeDetailsViewModel: MemesDetailsContract.ViewModel
+    private val memeDetailsViewModel by viewModel<MemeDetailViewModel>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater.inflate(R.layout.layout_fragment_meme_details, container, false)
         dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
-        memeDetailsViewModel = ViewModelProvider(this, MemeViewModelFactory.viewModelFactory {
-            MemeDetailViewModel(MemeDetailModel(MemeService()))
-        })
-            .get(MemeDetailViewModel::class.java)
+
         arguments?.getInt(MEME_ID)?.let {
             memeDetailsViewModel.fetchMeme(it)
         }

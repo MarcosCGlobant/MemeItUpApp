@@ -1,9 +1,9 @@
 package com.example.memeitupapp.ui.gridmemes.model
 
-import com.example.memeitupapp.data.entity.Meme
-import com.example.memeitupapp.data.repository.MemeService
+import com.globant.domain.entity.Meme
 import com.example.memeitupapp.ui.contract.GridMemesContract
-import com.example.memeitupapp.util.Result
+import com.globant.domain.service.MemeService
+import com.globant.domain.util.Result
 
 class GridMemesModel(private val memesService: MemeService) : GridMemesContract.Model {
 
