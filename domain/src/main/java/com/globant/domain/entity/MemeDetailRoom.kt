@@ -1,15 +1,16 @@
 package com.globant.domain.entity
 
-import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.globant.domain.util.DEFAULT_ID
+import com.globant.domain.util.DEFAULT_STRING
 
 @Entity(tableName = "memeDetail_table")
 class MemeDetailRoom(
-    @PrimaryKey @ColumnInfo(name = "id") val id: Int,
-    @ColumnInfo(name = "origin") val origin: String,
-    @ColumnInfo(name = "image") val image: String,
-    @ColumnInfo(name = "name") val name: String,
-    @ColumnInfo(name = "rank") val rank: String,
-    @ColumnInfo(name = "tags") val tags: String
+    @PrimaryKey val id: Int = DEFAULT_ID,
+    val origin: String = DEFAULT_STRING,
+    val image: String = DEFAULT_STRING,
+    val name: String = DEFAULT_STRING,
+    val rank: String = DEFAULT_STRING,
+    val tags: String = DEFAULT_STRING
 )

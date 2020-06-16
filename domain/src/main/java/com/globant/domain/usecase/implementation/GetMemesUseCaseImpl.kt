@@ -6,6 +6,5 @@ import com.globant.domain.usecase.GetMemesUseCase
 import com.globant.domain.util.Result
 
 class GetMemesUseCaseImpl(private val memeService: MemeService) : GetMemesUseCase {
-    override fun invoke(): Result<List<Meme>> =
-            memeService.getMemesFromApi()
+    override fun invoke(): Result<List<Meme>> = memeService.getMemesFromApi()
 }
