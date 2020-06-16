@@ -31,5 +31,6 @@ dependencies {
     implementation project(path: ':data')
     def lib = rootProject.ext.generalDependencies
 
+    implementation lib.roomruntime
     implementation lib.koinviewmodel
 }
