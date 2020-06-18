@@ -3,6 +3,7 @@ package com.globant.di
 import androidx.room.Room
 import com.globant.data.database.MemeRoomDataBaseImpl
 import com.globant.data.service.MemeServiceImpl
+import com.globant.domain.database.MemeRoomDataBase
 import com.globant.domain.service.MemeService
 import com.globant.domain.usecase.UpdateMemeDetailsDataBaseUseCase
 import com.globant.domain.usecase.UpdateMemesDataBaseUseCase
@@ -32,7 +33,7 @@ val useCasesModule = module {
 }
 
 val dataBaseModule = module {
-    single { Room.databaseBuilder(get(), MemeRoomDataBaseImpl::class.java, DATA_BASE_NAME).build() }
+    single<MemeRoomDataBase> { Room.databaseBuilder(get(), MemeRoomDataBaseImpl::class.java, DATA_BASE_NAME).build() }
     single { get<MemeRoomDataBaseImpl>().memeDao() }
 }
 

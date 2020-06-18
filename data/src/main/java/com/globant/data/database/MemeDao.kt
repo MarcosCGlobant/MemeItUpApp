@@ -1,6 +1,5 @@
 package com.globant.data.database
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -12,10 +11,10 @@ import com.globant.domain.entity.MemeRoom
 interface MemeDao {
 
     @Query("SELECT * FROM meme_table")
-    fun getMemes(): LiveData<List<MemeRoom>>
+    fun getMemes(): List<MemeRoom>
 
     @Query("SELECT * FROM memeDetail_table WHERE id = :memeId")
-    fun getMemeById(memeId: Int): LiveData<MemeDetailRoom>
+    fun getMemeById(memeId: Int): List<MemeDetailRoom>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertMeme(meme: MemeRoom)
