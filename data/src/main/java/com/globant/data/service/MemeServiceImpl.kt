@@ -2,7 +2,7 @@ package com.globant.data.service
 
 import com.globant.data.ServiceGenerator
 import com.globant.data.mapper.MemeDetailMapperService
-import com.globant.data.mapper.MemesMapperService
+import com.globant.data.mapper.MemeMapperService
 import com.globant.domain.entity.Meme
 import com.globant.domain.entity.MemeDetail
 import com.globant.data.service.api.ServiceApi
@@ -14,7 +14,7 @@ class MemeServiceImpl : MemeService {
 
     private val api = ServiceGenerator()
     private val mapperDetails = MemeDetailMapperService()
-    private val mapper = MemesMapperService()
+    private val mapper = MemeMapperService()
 
     override fun getMemesFromApi(): Result<List<Meme>> {
         try {

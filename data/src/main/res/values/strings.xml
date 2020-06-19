@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="string_meme_detail_error">MemeDetail not found</string>
+    <string name="string_meme_error">Memes not Found</string>
+</resources>

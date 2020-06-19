@@ -52,4 +52,5 @@ dependencies {
     testImplementation lib.mockitocore
     testImplementation lib.mockitoinline
     implementation lib.koinviewmodel
+    implementation lib.stetho
 }

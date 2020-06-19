@@ -19,7 +19,7 @@ val viewModelsModule = module {
 }
 
 val modelsModule = module {
-    single<GridMemesContract.Model> { GridMemesModel(get()) }
-    single<ListMemesContract.Model> { ListMemesModel(get()) }
-    single<MemesDetailsContract.Model> { MemeDetailModel(get()) }
+    single<GridMemesContract.Model> { GridMemesModel(get(), get(), get()) }
+    single<ListMemesContract.Model> { ListMemesModel(get(), get(), get()) }
+    single<MemesDetailsContract.Model> { MemeDetailModel(get(), get(), get()) }
 }

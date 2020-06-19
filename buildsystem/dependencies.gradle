@@ -22,6 +22,7 @@ ext {
     mockitoinline = "2.21.0"
     koin_viewmodel = "2.0.0-GA"
     roomversion = "2.2.5"
+    stethoversion = "1.5.1"
 
     generalDependencies = [
             kotlin                  : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${kotlin}",
@@ -49,6 +50,7 @@ ext {
             roomruntime             : "androidx.room:room-runtime:${roomversion}",
             roomcompiler            : "androidx.room:room-compiler:${roomversion}",
             roomktx                 : "androidx.room:room-ktx:${roomversion}",
-            roomtesting             : "androidx.room:room-testing:${roomversion}"
+            roomtesting             : "androidx.room:room-testing:${roomversion}",
+            stetho                  : "com.facebook.stetho:stetho:${stethoversion}"
     ]
 }

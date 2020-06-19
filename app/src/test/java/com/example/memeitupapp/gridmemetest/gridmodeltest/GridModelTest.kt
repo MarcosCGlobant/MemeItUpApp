@@ -4,11 +4,13 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.globant.domain.entity.Meme
 import com.example.memeitupapp.ui.contract.GridMemesContract
 import com.example.memeitupapp.ui.gridmemes.model.GridMemesModel
-import com.globant.domain.service.MemeService
+import com.globant.domain.usecase.GetMemesFromDataBaseUseCase
+import com.globant.domain.usecase.GetMemesUseCase
+import com.globant.domain.usecase.UpdateMemesDataBaseUseCase
 import com.globant.domain.util.Result
 import com.nhaarman.mockitokotlin2.mock
+import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
-import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
@@ -22,31 +24,35 @@ class GridModelTest {
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
 
-    private val memeService: MemeService = mock()
+    private val mockedGetMemesUseCase: GetMemesUseCase = mock()
+    private val mockedGetMemesFromDataBaseUseCase: GetMemesFromDataBaseUseCase = mock()
+    private val mockedUpdateMemesDataBaseUseCase: UpdateMemesDataBaseUseCase = mock()
+    private val mockedMemesResult: Result.Success<List<Meme>> = mock()
     private lateinit var gridMemesModel: GridMemesContract.Model
 
     @Before
     fun setup() {
-        gridMemesModel = GridMemesModel(memeService)
+        gridMemesModel = GridMemesModel(mockedGetMemesUseCase, mockedGetMemesFromDataBaseUseCase, mockedUpdateMemesDataBaseUseCase)
     }
 
     @Test
-    fun `on get memes for grid successfully`() {
-        val mockedMemesResult: Result.Success<List<Meme>> = mock()
-        whenever(memeService.getMemesFromApi()).thenReturn(mockedMemesResult)
-
-        runBlocking { gridMemesModel.getMemes() }
+    fun `on GetMemesUseCase gets data from API, update data base`() {
+        whenever(mockedGetMemesUseCase.invoke()).thenReturn(mockedMemesResult)
 
         assertEquals(mockedMemesResult, gridMemesModel.getMemes())
+
+        verify(mockedGetMemesUseCase).invoke()
+        verify(mockedUpdateMemesDataBaseUseCase).invoke(mockedMemesResult.data)
     }
 
     @Test
-    fun `on get memes for grid with error connection`() {
-        val mockedMemesResult: Result.Failure = mock()
-        whenever(memeService.getMemesFromApi()).thenReturn(mockedMemesResult)
-
-        runBlocking { gridMemesModel.getMemes() }
+    fun `on GetMemesUseCase fails, invoke GetMemesFromDataBaseUseCase`() {
+        whenever(mockedGetMemesFromDataBaseUseCase.invoke()).thenReturn(mockedMemesResult)
 
         assertEquals(mockedMemesResult, gridMemesModel.getMemes())
+
+        verify(mockedGetMemesUseCase).invoke()
+        verify(mockedGetMemesFromDataBaseUseCase).invoke()
     }
+
 }
