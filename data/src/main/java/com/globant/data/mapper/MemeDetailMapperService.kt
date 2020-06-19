@@ -14,12 +14,4 @@ class MemeDetailMapperService : BaseMapper<MemeDetailResponse, MemeDetail> {
             type.tags
     )
 
-    override fun transformToData(type: MemeDetail): MemeDetailResponse = MemeDetailResponse(
-            type.ID,
-            type.origin,
-            type.image,
-            type.name,
-            type.rank,
-            type.tags
-    )
 }

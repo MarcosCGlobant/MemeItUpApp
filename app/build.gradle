@@ -52,5 +52,5 @@ dependencies {
     testImplementation lib.mockitocore
     testImplementation lib.mockitoinline
     implementation lib.koinviewmodel
-    implementation 'com.facebook.stetho:stetho:1.5.1'
+    implementation lib.stetho
 }

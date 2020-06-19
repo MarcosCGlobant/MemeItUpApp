@@ -27,6 +27,7 @@ class GridModelTest {
     private val mockedGetMemesUseCase: GetMemesUseCase = mock()
     private val mockedGetMemesFromDataBaseUseCase: GetMemesFromDataBaseUseCase = mock()
     private val mockedUpdateMemesDataBaseUseCase: UpdateMemesDataBaseUseCase = mock()
+    private val mockedMemesResult: Result.Success<List<Meme>> = mock()
     private lateinit var gridMemesModel: GridMemesContract.Model
 
     @Before
@@ -36,7 +37,6 @@ class GridModelTest {
 
     @Test
     fun `on GetMemesUseCase gets data from API, update data base`() {
-        val mockedMemesResult: Result.Success<List<Meme>> = mock()
         whenever(mockedGetMemesUseCase.invoke()).thenReturn(mockedMemesResult)
 
         assertEquals(mockedMemesResult, gridMemesModel.getMemes())
@@ -47,12 +47,9 @@ class GridModelTest {
 
     @Test
     fun `on GetMemesUseCase fails, invoke GetMemesFromDataBaseUseCase`() {
-        val mockedMemesResultFailure: Result.Failure = mock()
-        val mockedMemesResultSuccess: Result.Success<List<Meme>> = mock()
-        whenever(mockedGetMemesUseCase.invoke()).thenReturn(mockedMemesResultFailure)
-        whenever(mockedGetMemesFromDataBaseUseCase.invoke()).thenReturn(mockedMemesResultSuccess)
+        whenever(mockedGetMemesFromDataBaseUseCase.invoke()).thenReturn(mockedMemesResult)
 
-        assertEquals(mockedMemesResultSuccess, gridMemesModel.getMemes())
+        assertEquals(mockedMemesResult, gridMemesModel.getMemes())
 
         verify(mockedGetMemesUseCase).invoke()
         verify(mockedGetMemesFromDataBaseUseCase).invoke()

@@ -14,7 +14,7 @@ class MemeDetailMapperDataBase : BaseMapper<MemeDetailRoom, MemeDetail> {
             type.tags
         )
 
-    override fun transformToData(type: MemeDetail): MemeDetailRoom =
+    fun transformToData(type: MemeDetail): MemeDetailRoom =
         MemeDetailRoom(
             type.ID,
             type.origin,

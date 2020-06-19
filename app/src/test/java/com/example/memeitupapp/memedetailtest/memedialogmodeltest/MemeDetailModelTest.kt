@@ -15,7 +15,10 @@ import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import org.junit.runner.RunWith
+import org.mockito.junit.MockitoJUnitRunner
 
+@RunWith(MockitoJUnitRunner::class)
 class MemeDetailModelTest {
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
@@ -23,6 +26,7 @@ class MemeDetailModelTest {
     private val mockedGetMemeByIdUseCase: GetMemeByIdUseCase = mock()
     private val mockedGetMemeByIdFromDataBaseUseCase: GetMemeByIdFromDataBaseUseCase = mock()
     private val mockedUpdateMemeDetailsDataBaseUseCase: UpdateMemeDetailsDataBaseUseCase = mock()
+    private val mockedMemeDetailResult: Result.Success<MemeDetail> = mock()
     private lateinit var memeDetailModel: MemesDetailsContract.Model
 
     @Before
@@ -32,23 +36,19 @@ class MemeDetailModelTest {
 
     @Test
     fun `on GetMemeByIdUseCase gets data from API, updates data base`() {
-        val mockedMemeResult: Result.Success<MemeDetail> = mock()
-        whenever(mockedGetMemeByIdUseCase.invoke(MEME_ID)).thenReturn(mockedMemeResult)
+        whenever(mockedGetMemeByIdUseCase.invoke(MEME_ID)).thenReturn(mockedMemeDetailResult)
 
-        assertEquals(mockedMemeResult, memeDetailModel.getMeme(MEME_ID))
+        assertEquals(mockedMemeDetailResult, memeDetailModel.getMeme(MEME_ID))
 
         verify(mockedGetMemeByIdUseCase).invoke(MEME_ID)
-        verify(mockedUpdateMemeDetailsDataBaseUseCase).invoke(mockedMemeResult.data)
+        verify(mockedUpdateMemeDetailsDataBaseUseCase).invoke(mockedMemeDetailResult.data)
     }
 
     @Test
     fun `on GetMemeByIdUseCase fails, invoke GetMemeByIdFromDataBase`() {
-        val mockedMemeDetailResultFailure: Result.Failure = mock()
-        val mockedMemeDetailResultSuccess: Result.Success<MemeDetail> = mock()
-        whenever(mockedGetMemeByIdUseCase.invoke(MEME_ID)).thenReturn(mockedMemeDetailResultFailure)
-        whenever(mockedGetMemeByIdFromDataBaseUseCase.invoke(MEME_ID)).thenReturn(mockedMemeDetailResultSuccess)
+        whenever(mockedGetMemeByIdFromDataBaseUseCase.invoke(MEME_ID)).thenReturn(mockedMemeDetailResult)
 
-        assertEquals(mockedMemeDetailResultSuccess, memeDetailModel.getMeme(MEME_ID))
+        assertEquals(mockedMemeDetailResult, memeDetailModel.getMeme(MEME_ID))
 
         verify(mockedGetMemeByIdUseCase).invoke(MEME_ID)
         verify(mockedGetMemeByIdFromDataBaseUseCase).invoke(MEME_ID)

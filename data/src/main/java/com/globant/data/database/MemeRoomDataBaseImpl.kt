@@ -24,19 +24,17 @@ abstract class MemeRoomDataBaseImpl : RoomDatabase(), MemeRoomDataBase {
             if (it.isNotEmpty()) {
                 Result.Success(memesMapper.transform(it))
             } else {
-                Result.Failure(Exception("Memes not Found"))
+                Result.Failure(Exception(MEME_ERROR))
             }
         }
-
 
     override fun getMemeByIdFromDataBase(memeId: Int): Result<MemeDetail> =
         memeDao().getMemeById(memeId).let {
             if (it.isNotEmpty()) {
                 Result.Success(memeDetailMapper.transformMeme(it.first()))
             } else
-                Result.Failure(Exception("MemeDetail not found"))
+                Result.Failure(Exception(MEME_DETAIL_ERROR))
         }
-
 
     override fun updateMemeDetailInDataBase(memeDetail: MemeDetail) {
         memeDao().insertMemeDetail(memeDetailMapper.transformToData(memeDetail))
@@ -46,5 +44,10 @@ abstract class MemeRoomDataBaseImpl : RoomDatabase(), MemeRoomDataBase {
         listOfMeme.forEach {
             memeDao().insertMeme(memesMapper.transformToData(it))
         }
+    }
+
+    companion object{
+        private const val MEME_DETAIL_ERROR = "Meme details not found"
+        private const val MEME_ERROR = "Meme not found"
     }
 }
