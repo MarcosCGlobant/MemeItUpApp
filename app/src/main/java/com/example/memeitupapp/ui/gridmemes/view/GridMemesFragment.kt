@@ -15,6 +15,7 @@ import com.example.memeitupapp.ui.memedetail.view.MemeDetailFragment
 import com.example.memeitupapp.util.Data
 import com.example.memeitupapp.util.Event
 import com.example.memeitupapp.util.Status
+import com.example.memeitupapp.util.getColumnsByOrientation
 import kotlinx.android.synthetic.main.layout_fragment_grid_memes.layout_fragment_grid_memes_progress_bar
 import kotlinx.android.synthetic.main.layout_fragment_grid_memes.layout_fragment_grid_memes_recycler_view
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -24,12 +25,22 @@ class GridMemesFragment : Fragment() {
     private val gridMemesViewModel by viewModel<GridMemesViewModel>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        inflater.inflate(R.layout.layout_fragment_grid_memes, container, false)
+            inflater.inflate(R.layout.layout_fragment_grid_memes, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         gridMemesViewModel.getLiveData().observe(::getLifecycle, ::updateUI)
+        gridMemesViewModel.fetchMemes()
+    }
+
+    override fun onPause() {
+        layout_fragment_grid_memes_recycler_view.visibility = View.GONE
+        super.onPause()
+    }
+
+    override fun onResume() {
+        super.onResume()
         gridMemesViewModel.fetchMemes()
     }
 
@@ -63,12 +74,17 @@ class GridMemesFragment : Fragment() {
                 memeFragment.show(childFragmentManager, getString(R.string.tag))
             }
             gridMemesAdapter.submitList(memes)
-            layout_fragment_grid_memes_recycler_view.layoutManager = GridLayoutManager(context, COLUMNS)
-            layout_fragment_grid_memes_recycler_view.adapter = gridMemesAdapter
+            layout_fragment_grid_memes_recycler_view.apply {
+                layoutManager =
+                        GridLayoutManager(context, resources.configuration.getColumnsByOrientation(COLUMNS_PORTRAIT, COLUMNS_LANDSCAPE))
+                adapter = gridMemesAdapter
+                visibility = View.VISIBLE
+            }
         }
     }
 
     companion object {
-        const val COLUMNS = 4
+        private const val COLUMNS_PORTRAIT = 4
+        private const val COLUMNS_LANDSCAPE = 7
     }
 }
